@@ -26,36 +26,39 @@ int getRandNumber(){
     return randomNum;
 }
 
-void guessNumber(int random){
-    int numGuess = 0;
-    int guessCount = 0;
-
-
-    while(1) {
-
-        printf("\nPlease enter a number that you would like to guess: ");
+int getNumber(){
+    int numGuess;
+    printf("\nPlease enter a number that you would like to guess: ");
         scanf("%d", &numGuess);
+}
 
-        if (numGuess > random){
+void checkGuess(int num, int rand, int guesses){
+    if (num > rand){
             printf("This number is too high\n");
-            guessCount++;
-            
+            guesses++;
         }
-        else if(numGuess < random){
+        else if(num < rand){
             printf("This number is too low\n");
-            guessCount++;
-
+            guesses++;
         }
-        else if (numGuess == random){
-            printf("You have guessed!\n");
-            printf("It took you %d guesses", guessCount);
-            exit(0);
+        else if (num == rand){
+            showStats(guesses);
         }
         else {
             printf("You have not inputted a valid input.");
         }
-    }
+}
 
+void showStats(int guesses){
+    printf("You have guessed!\n");
+    printf("It took you %d guesses", guesses);
+}
+
+void guessNumber(int random){
+    int guessCount = 0;
+    int num = getNumber();
+
+    while(1) { checkGuess(num, random, guessCount); }
 }
 
 int main(){
