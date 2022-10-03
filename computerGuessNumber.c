@@ -27,6 +27,7 @@ int getRandNumber(){
 }
 
 int getNumber(){
+    
     int numGuess;
     printf("\nPlease enter a number that you would like to guess: ");
         scanf("%d", &numGuess);
