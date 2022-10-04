@@ -31,36 +31,30 @@ int generateGuess(){
     return guessedNumber;
 }
 
-int isCorrect(compNum){
+int isCorrect(int compNum){
     char highLow[10];
 
+    printf("Is %d higher or lower then your number? ", compNum);
+    scanf("%s", highLow);
 
-    if(USERNUM == compNum){
+    if (strcmp(highLow, "Yes") == 0 || strcmp(highLow, "yes") == 0){
         printf("The computer has guessed your Number!");
-        return 1;
+        exit(0);
     }
-    else{
-        printf("Is %d higher or lower then your number? ", compNum);
-        scanf("%s", highLow);
-
-        if (strcmp(highLow, "Higher") != 0 || strcmp(highLow, "higher") != 0){
-            LOWER = compNum;
-            return CORRECT;            }
-        else if (strcmp(highLow, "Lower") != 0 || strcmp(highLow, "lower") != 0){
-            HIGHER = compNum;
-            return CORRECT;
-        }
-        else{
-            printf("You have not inpuuted a valid comparison");
-        }
+    else if (strcmp(highLow, "Higher") == 0 || strcmp(highLow, "higher") == 0) {
+        HIGHER = compNum;
+        return CORRECT;
+    } else if (strcmp(highLow, "Lower") == 0 || strcmp(highLow, "lower") == 0) {
+        LOWER = compNum;
+        return CORRECT;
+    } else {
+        printf("You have not inputted a valid comparison");
+        return CORRECT;
     }
 }
 
-
-
-
 void play(){
-    while(1){   
+    while(1){
         int computerGuess = generateGuess();
         isCorrect(computerGuess);
     }
