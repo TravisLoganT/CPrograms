@@ -8,17 +8,28 @@ If a number is exactly divisible by 2 then its an even number else it is an odd 
 void modOddEven(int number){
     
     if (number % 2 == 0){
-        printf("This is a even number");
+        printf("This is a even number\n");
     }
     else{
-        printf("This is a odd number");
+        printf("This is a odd number\n");
+    }
+
+}
+
+void bitwiseOddEven(int number){
+
+    if (number & 1){
+        printf("This is an odd number\n");
+    }
+    else{
+        printf("This is an even number\n");
     }
 
 }
 
 int getNumber(){
     int num;
-    printf("Please enter a number: ");
+    printf("\nPlease enter a number: ");
 
     scanf("%d", &num);
 
@@ -26,7 +37,8 @@ int getNumber(){
 }
 
 int main(){
-    int num = getNumber();
-    modOddEven(num);
+    
+    modOddEven(getNumber());
+    bitwiseOddEven(getNumber());
 
 }
